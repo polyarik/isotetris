@@ -1,0 +1,55 @@
+.info-wrapper {
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	font-size: 32px;
+
+	z-index: 10;
+}
+
+.info {
+	width: fit-content;
+
+	margin-bottom: var(--margin);
+	padding: var(--margin);
+
+	transform: skew(150deg);
+	filter: drop-shadow(-50px 0 0 gray);
+
+	white-space: nowrap;
+}
+
+.info::before {
+	width: 32px;
+
+	display: inline-block;
+	text-align: center;
+
+	transform: skew(-150deg);
+}
+
+.info span {
+	display: inline-block;
+	margin-right: calc(var(--margin) * 2);
+
+	transform: skew(-150deg);
+}
+
+.time {
+	/*TEMP*/
+	background: linear-gradient(90deg, gray, lightgray);
+}
+
+.time::before {
+	content: "⧖";
+}
+
+.score {
+	/*TEMP*/
+	background: linear-gradient(90deg, gray, lightgray);
+}
+
+.score::before {
+	content: "☆";
+}

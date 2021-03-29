@@ -1,0 +1,90 @@
+<!doctype html>
+<meta charset=utf8>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+		<title>IsoTetris</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/controls.css">
+		<link rel="stylesheet" type="text/css" href="css/run-info.css">
+		<link rel="stylesheet" type="text/css" href="css/end-screen.css">
+		<link rel="stylesheet" type="text/css" href="css/settings.css">
+		<link rel="stylesheet" type="text/css" href="css/canvas.css">
+	</head>
+
+	<body onresize="resize()">
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+		<script type="text/javascript" src="js/render.js"></script>
+		<script type="text/javascript" src="js/controls.js"></script>
+		<script type="text/javascript" src="js/config.js"></script>
+
+		<input type="radio" id="controls-radio" name="controls" value="hide">
+		<label for="controls-radio" class="controls-wrapper" onclick="init()">
+			<div class="controls controls-desktop">
+				<div class="control control-up">rotate<p>'W' or 'Up Arrow'</p></div>
+				<div class="control control-left">move to the left<p>'A' or 'Left Arrow'</p></div>
+				<div class="control control-right">move to the right<p>'D' or 'Right Arrow'</p></div>
+				<div class="control control-down">accelerate<p>'S' or 'Down Arrow'</p></div>
+			</div>
+			
+			<!--<div class="controls controls-mobile" style="display: none">
+				<div class="control control-up">↻</div>
+				<div class="control control-left">←</div>
+				<div class="control control-right">→</div>
+				<div class="control control-down">↡</div>
+			</div>-->
+
+			<div class="controls controls-background">
+				<div class="control-background control-background-up"></div>
+				<div class="control-background control-background-left"></div>
+				<div class="control-background control-background-right"></div>
+				<div class="control-background control-background-down"></div>
+			</div>
+		</label>
+
+		<div class="game-wrapper">
+			<div class="info-wrapper">
+				<div class="info time"><span>time: 0 s</span></div>
+				<div class="info score"><span>score: 0</span></div>
+			</div>
+
+			<!--<div class="end-screen" style="display: none">
+				<div class="time">total time: 0 s</div>
+				<div class="score">final score: 0</div>
+			</div>-->
+
+			<!--<div class="settings">
+				<input id="settings-checkbox" type="checkbox" tabindex="-1">
+
+				<label for="settings-checkbox" class="settings-btn">
+					<span style="display: none">color mode</span>
+				</label>
+
+				<div class="color-modes">
+					<input type="radio" id="normal" name="color-mode" value="normal">
+					<label for="normal" class="color-mode" onclick="changeColorMode('normal')">normal</label>
+
+					<input type="radio" id="rainbow" name="color-mode" value="rainbow">
+					<label for="rainbow" class="color-mode" onclick="changeColorMode('rainbow')">rainbow</label>
+
+					<input type="radio" id="classic" name="color-mode" value="classic">
+					<label for="classic" class="color-mode" onclick="changeColorMode('classic')">classic</label>
+				</div>
+
+				<label for="settings-checkbox" class="backdrop" style="display: none"></div>
+			</div>-->
+
+			<div class="canvas-wrapper">
+				<canvas></canvas>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+.canvas-wrapper {
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	width: calc(100% - var(--margin)*2);
+	height: calc(100% - var(--margin)*2);
+	margin: var(--margin);
+
+	display: flex;
+    justify-content: space-around;
+	align-items: center;
+
+	z-index: 0;
+}
