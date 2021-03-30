@@ -31,6 +31,6 @@ const tetrominoes = [
 const fieldWidth = 10;
 const fieldHeight = 20;
 
-let colorMode = "normal";
+let colorMode = "rainbow";
 
 const tickDelay = 10;

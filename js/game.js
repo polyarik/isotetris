@@ -1,5 +1,4 @@
 let field = [];
-let trash = [];
 let score;
 
 let gameStartTime;
@@ -30,11 +29,9 @@ function initGame() {
 function startGame() {
     for (let y = 0; y < fieldHeight; y++) {
         field[y] = [];
-        trash[y] = [];
 
         for (let x = 0; x < fieldWidth; x++) {
             field[y][x] = 0;
-            trash[y][x] = 0;
         }
     }
 
@@ -61,7 +58,7 @@ function tick(currTick) {
     if (currTick % 5 == 0) {
         updateTime(timeElem, Date.now() - gameStartTime);
 
-        checkTrash();
+        checkField();
 
         if (acceleratedFall || currTick % 40 == 0) {
             if ( !moveTetromino(fallingTetromino) )
@@ -102,7 +99,6 @@ function addTetromino() {
 		return false;
     }
 
-    map(field, fallingTetromino);
     render(canvas);
 }
 
@@ -115,9 +111,7 @@ function moveTetromino(tetromino, side = "bottom") {
     else
         tetromino.x += (side == "right") ? 1 : -1;
 
-    map(field, tetromino);
     render(canvas);
-
     return true;
 }
 
@@ -129,9 +123,7 @@ function rotateTetromino(tetromino) {
         return false;
     }
 
-    map(field, tetromino);
     render(canvas);
-
     return true;
 }
 
@@ -177,34 +169,13 @@ function checkCollision(tetromino, side) {
 
         for (let x = 0; x < line.length; x++) {
             if ( line[x] ) {
-                if (!trash[y0 + y] || trash[y0 + y][x0 + x] != 0)
+                if (!field[y0 + y] || field[y0 + y][x0 + x] != 0)
                     return true;
             }
         }
     }
 
     return false;
-}
-
-function map(field, tetromino) {
-    for (let y = 0; y < fieldHeight; y++) {
-        for (let x = 0; x < fieldWidth; x++) {
-            field[y][x] = 0;
-        }
-    }
-
-    const x0 = tetromino.x;
-    const y0 = tetromino.y;
-
-    for (let y = 0; y < tetromino.shape.length; y++) {
-        const line = tetromino.shape[y];
-
-        for (let x = 0; x < line.length; x++) {
-            if ( line[x] ) {
-                field[y0 + y][x0 + x] = tetromino.color;
-            }
-        }
-    }
 }
 
 function land(tetromino) {
@@ -216,7 +187,7 @@ function land(tetromino) {
 
         for (let x = 0; x < line.length; x++) {
             if ( line[x] )
-                trash[y0 + y][x0 + x] = tetromino.color;
+                field[y0 + y][x0 + x] = tetromino.color;
         }
     }
 
@@ -226,23 +197,23 @@ function land(tetromino) {
     addTetromino();
 }
 
-function checkTrash() {
+function checkField() {
     let completedLines = 0;
 
     for (let y = fieldHeight - 1; y >= 0; y--) {
-        const count = trash[y].filter(x => x > 0).length;
+        const count = field[y].filter(x => x > 0).length;
 
         if (count) {
             if (count == fieldWidth) {
                 completedLines++;
 
                 for (let x = 0; x < fieldWidth; x++) {
-                    trash[y][x] = 0;
+                    field[y][x] = 0;
                 }
             } else if (completedLines) {
                 for (let x = 0; x < fieldWidth; x++) {
-                    trash[y + completedLines][x] = trash[y][x];
-                    trash[y][x] = 0;
+                    field[y + completedLines][x] = field[y][x];
+                    field[y][x] = 0;
                 }
             }
         }
