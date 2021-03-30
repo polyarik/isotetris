@@ -1,15 +1,31 @@
-function controls() {
+document.onkeydown = () => {
+    document.querySelector("#controls-radio").checked = true;
+    init();
+};
+
+function gameControls() {
     document.onkeydown = (event) => {
-        const key = event.keyCode;
-    
-        if (key == 87 || key == 38)
-            rotateTetromino(fallingTetromino);
-        else if (key == 65 || key == 37)
-            moveTetromino(fallingTetromino, "left");
-        else if (key == 68 || key == 39)
-            moveTetromino(fallingTetromino, "right");
-        else if (key == 83 || key == 40)
-            acceleratedFall = true;
+        switch (event.keyCode) {
+            case 87:
+            case 38:
+                rotateTetromino(fallingTetromino);
+                break;
+
+            case 65:
+            case 37:
+                moveTetromino(fallingTetromino, "left");
+                break;
+
+            case 68:
+            case 39:
+                moveTetromino(fallingTetromino, "right");
+                break;
+
+            case 83:
+            case 40:
+                acceleratedFall = true;
+                break;
+        }   
     };
     
     document.onkeyup = (event) => {
