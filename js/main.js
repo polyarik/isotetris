@@ -1,15 +1,22 @@
 let canvas;
 let canvasWrapper;
+let isMobile;
 
+function checkDevice() {
+	isMobile = /Android|webOS|iPhone|iPad|iPod|Windows Phone|BlackBerry/i.test(navigator.userAgent);
+
+	if (isMobile) {
+		document.querySelector(".controls-desktop").style.display = "none";
+		document.querySelector(".controls-mobile").style.display = "unset";
+	}
+}
 
 function init() {
 	canvas = document.querySelector("canvas");
-
 	canvasWrapper = document.querySelector(".canvas-wrapper");
 	resize();
 
 	initGame();
-	startGame();
 }
 
 function resize() {

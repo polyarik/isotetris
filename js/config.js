@@ -34,3 +34,4 @@ const fieldHeight = 20;
 let colorMode = "normal";
 
 const tickDelay = 10;
+const touchDelay = 80;

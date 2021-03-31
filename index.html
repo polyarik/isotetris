@@ -19,7 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="css/canvas.css">
 	</head>
 
-	<body onresize="resize()">
+	<body onload="checkDevice()" onresize="resize()">
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/render.js"></script>
@@ -34,13 +34,13 @@
 				<div class="control control-right">move to the right<p>'D' or 'Right Arrow'</p></div>
 				<div class="control control-down">accelerate<p>'S' or 'Down Arrow'</p></div>
 			</div>
-			
-			<!--<div class="controls controls-mobile" style="display: none">
+
+			<div class="controls controls-mobile" style="display: none">
 				<div class="control control-up">↻</div>
 				<div class="control control-left">←</div>
 				<div class="control control-right">→</div>
 				<div class="control control-down">↡</div>
-			</div>-->
+			</div>
 
 			<div class="controls controls-background">
 				<div class="control-background control-background-up"></div>
@@ -86,5 +86,5 @@
 				<canvas></canvas>
 			</div>
 		</div>
-	</body>
+	</body onl>
 </html>

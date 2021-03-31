@@ -20,10 +20,12 @@ let scoreElem;
 let interval;
 
 function initGame() {
-    gameControls();
+    initControls();
 
     timeElem = document.querySelector(".time").querySelector("span");
     scoreElem = document.querySelector(".score").querySelector("span");
+
+    startGame();
 }
 
 function startGame() {
