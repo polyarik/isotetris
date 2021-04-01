@@ -48,6 +48,10 @@ function initMobileControls() {
         return false;
     }
 
+    document.onkeyup = () => {
+        return false;
+    }
+
     document.oncontextmenu = () => {
         return false;
     }
@@ -86,5 +90,15 @@ function initMobileControls() {
     document.ontouchend = (event) => {
         clearInterval(touchInterval);
         acceleratedFall = false;
+    };
+}
+
+function initEndScreenControls(endScreen) {
+    document.onkeydown = () => {
+        return false;
+    };
+
+    document.onkeyup = () => {
+        startGame();
     };
 }

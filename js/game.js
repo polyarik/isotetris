@@ -1,6 +1,6 @@
 let field = [];
-let score;
 
+let score;
 let gameStartTime;
 let pauseStartTime;
 
@@ -16,19 +16,22 @@ let acceleratedFall = false;
 //let pauseElem; (checkbox)
 let timeElem;
 let scoreElem;
+let endScreen;
 
 let interval;
 
 function initGame() {
-    initControls();
-
     timeElem = document.querySelector(".time").querySelector("span");
     scoreElem = document.querySelector(".score").querySelector("span");
+    endScreen = document.querySelector(".end-screen-wrapper");
 
     startGame();
 }
 
 function startGame() {
+    endScreen.style.display = "none";
+    initControls();
+
     for (let y = 0; y < fieldHeight; y++) {
         field[y] = [];
 
@@ -69,16 +72,6 @@ function tick(currTick) {
             render(canvas);
         }
     }
-}
-
-function finishGame() {
-    clearInterval(interval);
-
-    //show end screen
-
-    alert("score: " + score); //TEMP
-
-    startGame();
 }
 
 function addTetromino() {
@@ -235,4 +228,19 @@ function updateTime(elem, time = 0) {
     //TEMP
     const seconds = Math.round(time / 1000);
     elem.innerText = `time: ${seconds} s`;
+}
+
+function finishGame() {
+    clearInterval(interval);
+    showEndScreen(endScreen, Date.now() - gameStartTime, score);
+}
+
+function showEndScreen(endScreen, time, score) {
+    endScreen.style.display = "unset";
+
+    const seconds = Math.round(time / 1000);
+    endScreen.querySelector(".end-screen-time").querySelector("span").innerText = `total time: ${seconds} s`;
+    endScreen.querySelector(".end-screen-score").querySelector("span").innerText = `final score: ${score}`;
+
+    initEndScreenControls(endScreen);
 }

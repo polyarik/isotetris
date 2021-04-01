@@ -15,9 +15,12 @@
 	padding: var(--margin);
 
 	transform: skew(150deg);
-	filter: drop-shadow(-50px 0 0 gray);
 
 	white-space: nowrap;
+}
+
+.info-wrapper .info {
+	filter: drop-shadow(-50px 0 0 gray);
 }
 
 .info::before {
