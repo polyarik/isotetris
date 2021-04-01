@@ -15,21 +15,25 @@ function initDesktopControls() {
         switch (event.keyCode) {
             case 87:
             case 38:
+		    case 75:
                 rotateTetromino(fallingTetromino);
                 break;
 
             case 68:
             case 39:
+			case 76:
                 moveTetromino(fallingTetromino, "right");
                 break;
 
             case 65:
             case 37:
+		    case 72:
                 moveTetromino(fallingTetromino, "left");
                 break;
 
             case 83:
             case 40:
+		    case 74:
                 acceleratedFall = true;
                 break;
         }   
@@ -38,7 +42,7 @@ function initDesktopControls() {
     document.onkeyup = (event) => {
         const key = event.keyCode;
     
-        if (key == 83 || key == 40)
+        if (key == 83 || key == 40 || key == 74)
             acceleratedFall = false;
     };
 }
