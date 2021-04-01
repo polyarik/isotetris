@@ -14,8 +14,8 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/controls.css">
 		<link rel="stylesheet" type="text/css" href="css/run-info.css">
-		<link rel="stylesheet" type="text/css" href="css/end-screen.css">
 		<link rel="stylesheet" type="text/css" href="css/settings.css">
+		<link rel="stylesheet" type="text/css" href="css/end-screen.css">
 		<link rel="stylesheet" type="text/css" href="css/canvas.css">
 	</head>
 
@@ -56,21 +56,21 @@
 				<div class="info score"><span>score: 0</span></div>
 			</div>
 
-			<div class="end-screen-wrapper" style="display: none" onclick="startGame()">
+			<div class="backdrop end-screen-wrapper" style="display: none" onclick="startGame()">
 				<div class="end-screen">
 					<div class="info end-screen-time"><span>total time: 0 s</span></div>
 					<div class="info end-screen-score"><span>final score: 0</span></div>
 				</div>
 			</div>
 
-			<!--<div class="settings">
+			<div class="settings">
 				<input id="settings-checkbox" type="checkbox" tabindex="-1">
 
 				<label for="settings-checkbox" class="settings-btn">
-					<span style="display: none">color mode</span>
+					<!--<span style="display: none">color mode</span>-->
 				</label>
 
-				<div class="color-modes">
+				<!--<div class="color-modes">
 					<input type="radio" id="normal" name="color-mode" value="normal">
 					<label for="normal" class="color-mode" onclick="changeColorMode('normal')">normal</label>
 
@@ -79,14 +79,14 @@
 
 					<input type="radio" id="classic" name="color-mode" value="classic">
 					<label for="classic" class="color-mode" onclick="changeColorMode('classic')">classic</label>
-				</div>
+				</div>-->
 
-				<label for="settings-checkbox" class="backdrop" style="display: none"></div>
-			</div>-->
+				<label for="settings-checkbox" class="backdrop" style="display: none"></label>
+			</div>
 
 			<div class="canvas-wrapper">
 				<canvas></canvas>
 			</div>
 		</div>
-	</body onl>
+	</body>
 </html>

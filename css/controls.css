@@ -119,13 +119,6 @@
 
 /*----------------*/
 
-#controls-radio {
-    width: 0;
-    height: 0;
-
-    opacity: 0;
-}
-
 #controls-radio:checked + .controls-wrapper {
     animation: disappear .5s ease-in;
     opacity: 0;

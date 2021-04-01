@@ -13,7 +13,7 @@ let fallingTetromino = {
 
 let acceleratedFall = false;
 
-//let pauseElem; (checkbox)
+let pauseCheckbox;
 let timeElem;
 let scoreElem;
 let endScreen;
@@ -21,6 +21,7 @@ let endScreen;
 let interval;
 
 function initGame() {
+    pauseCheckbox = document.querySelector("#settings-checkbox");
     timeElem = document.querySelector(".time").querySelector("span");
     scoreElem = document.querySelector(".score").querySelector("span");
     endScreen = document.querySelector(".end-screen-wrapper");
@@ -58,19 +59,29 @@ function startGame() {
 }
 
 function tick(currTick) {
-    //if (!pause)
-
-    if (currTick % 5 == 0) {
-        updateTime(timeElem, Date.now() - gameStartTime);
-
-        checkField();
-
-        if (acceleratedFall || currTick % 40 == 0) {
-            if ( !moveTetromino(fallingTetromino) )
-                land(fallingTetromino);
-
-            render(canvas);
+    if (!pauseCheckbox.checked) {
+        if (currTick % 5 == 0) {
+            updateTime(timeElem, Date.now() - gameStartTime);
+    
+            checkField();
+    
+            if (acceleratedFall || currTick % 40 == 0) {
+                if ( !moveTetromino(fallingTetromino) )
+                    land(fallingTetromino);
+    
+                render(canvas);
+            }
         }
+    }
+}
+
+function pause() {
+    pauseCheckbox.checked = !pauseCheckbox.checked;
+
+    if (pauseCheckbox.checked) {
+        pauseStartTime = Date.now();
+    } else {
+        gameStartTime += Date.now() - pauseStartTime;
     }
 }
 
@@ -98,28 +109,32 @@ function addTetromino() {
 }
 
 function moveTetromino(tetromino, side = "bottom") {
-    if ( checkCollision(tetromino, side) )
-        return false;
+    if (!pauseCheckbox.checked) {
+        if ( checkCollision(tetromino, side) )
+            return false;
 
-    if (side == "bottom")
-        tetromino.y += 1;
-    else
-        tetromino.x += (side == "right") ? 1 : -1;
+        if (side == "bottom")
+            tetromino.y += 1;
+        else
+            tetromino.x += (side == "right") ? 1 : -1;
 
-    render(canvas);
-    return true;
+        render(canvas);
+        return true;
+    }
 }
 
 function rotateTetromino(tetromino) {
-    rotateMatrix(tetromino.shape);
+    if (!pauseCheckbox.checked) {
+        rotateMatrix(tetromino.shape);
 
-    if ( checkCollision(tetromino) ) {
-        rotateMatrix(tetromino.shape, false);
-        return false;
+        if ( checkCollision(tetromino) ) {
+            rotateMatrix(tetromino.shape, false);
+            return false;
+        }
+
+        render(canvas);
+        return true;
     }
-
-    render(canvas);
-    return true;
 }
 
 function rotateMatrix(matrix, clockwise = true) {

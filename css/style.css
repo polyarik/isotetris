@@ -5,7 +5,8 @@
 
 :root {
 	--margin: 8px;
-	/*...*/
+	
+	--trasparent-black: hsla(0, 0%, 0%, .6);
 }
 
 html, body {
@@ -37,4 +38,11 @@ html, body {
 	opacity: 0;
 
 	z-index: 0;
+}
+
+input {
+    width: 0;
+    height: 0;
+
+    opacity: 0;
 }
