@@ -36,6 +36,10 @@ function initDesktopControls() {
 		    case 74:
                 acceleratedFall = true;
                 break;
+
+            case 27:
+            case 13:
+                pause();
         }   
     };
     

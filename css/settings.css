@@ -1,0 +1,74 @@
+.settings {
+    position: absolute;
+    right: 0;
+
+    font-size: 32px;
+
+    z-index: 43;
+}
+
+.settings-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    transform: skew(-150deg);
+
+    cursor: pointer;
+}
+
+.settings-btn span {
+    white-space: nowrap;
+    transform: skew(150deg);
+}
+
+.settings-btn::after {
+    width: 42px;
+    height: 42px;
+    content: "⚙";
+
+    display: inline-block;
+    
+    font-size: 42px;
+    text-align: center;
+    line-height: 42px;;
+
+    transform: skew(150deg);
+
+    transition: transform .3s;
+}
+
+.backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--trasparent-black);
+
+    cursor: pointer;
+    pointer-events: fill;
+    z-index: 42;
+}
+
+/*----------------*/
+
+#settings-checkbox:checked ~ .settings-btn span {
+    display: unset !important;
+    /*animation: */
+}
+
+#settings-checkbox:checked ~ .settings-btn::after {
+    transform: skew(150deg) rotate(1turn);
+}
+
+#settings-checkbox:checked ~ .backdrop {
+    display: unset !important;
+    animation: appear .3s ease-in;
+}
