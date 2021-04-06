@@ -78,3 +78,8 @@ function calcPos(x, y, cubeSize) {
 
     return {"x": xPos, "y": yPos};
 }
+
+function changeColorMode(mode) {
+    colorMode = mode;
+    render(canvas);
+}

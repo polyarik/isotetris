@@ -2,15 +2,25 @@
     position: absolute;
     right: 0;
 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+
     font-size: 32px;
 
     z-index: 43;
 }
 
 .settings-btn {
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
+
+    width: fit-content;
+    margin-bottom: var(--margin);
+    margin-left: calc(var(--margin) * 2);
+	padding: var(--margin);
 
     display: flex;
     align-items: center;
@@ -18,12 +28,18 @@
 
     transform: skew(-150deg);
 
+    white-space: nowrap;
+    background: linear-gradient(-90deg, gray, lightgray); /*TEMP*/
+    filter: drop-shadow(50px 0 0 gray);
+
     cursor: pointer;
+    z-index: 45;
 }
 
 .settings-btn span {
-    white-space: nowrap;
+    margin-left: calc(var(--margin) * 2);
     transform: skew(150deg);
+    white-space: nowrap;
 }
 
 .settings-btn::after {
@@ -32,14 +48,53 @@
     content: "⚙";
 
     display: inline-block;
+    margin-left: var(--margin);
     
     font-size: 42px;
     text-align: center;
-    line-height: 42px;;
+    line-height: 42px;
 
     transform: skew(150deg);
 
     transition: transform .3s;
+}
+
+.color-modes {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    transform: translateX(calc(100% + 50px));
+    transition: transform .3s;
+
+    z-index: 44;
+}
+
+.color-mode {
+    width: calc(100% - var(--margin)*2);
+
+    transform: skew(-150deg);
+    filter: drop-shadow(50px 0 0 gray) brightness(56%);
+
+    background: linear-gradient(-90deg, gray, lightgray);
+    transition: width .2s;
+
+    cursor: pointer;
+}
+
+.color-mode-radio:checked + .color-mode {
+    width: 100%;
+    filter: drop-shadow(50px 0 0 gray);
+}
+
+.color-mode span {
+    margin-left: calc(var(--margin) * 2);
+    margin-right: 0;
+
+    transform: skew(150deg);
 }
 
 .backdrop {
@@ -65,7 +120,11 @@
 }
 
 #settings-checkbox:checked ~ .settings-btn::after {
-    transform: skew(150deg) rotate(1turn);
+    transform: skew(150deg) rotate(.5turn);
+}
+
+#settings-checkbox:checked ~ .color-modes {
+    transform: none;
 }
 
 #settings-checkbox:checked ~ .backdrop {

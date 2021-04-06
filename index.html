@@ -67,19 +67,19 @@
 				<input id="settings-checkbox" type="checkbox" tabindex="-1">
 
 				<label for="settings-checkbox" class="settings-btn">
-					<!--<span style="display: none">color mode</span>-->
+					<span style="display: none">color mode</span>
 				</label>
 
-				<!--<div class="color-modes">
-					<input type="radio" id="normal" name="color-mode" value="normal">
-					<label for="normal" class="color-mode" onclick="changeColorMode('normal')">normal</label>
+				<div class="color-modes">
+					<input type="radio" id="normal" class="color-mode-radio" name="color-mode" value="normal" checked="checked">
+					<label for="normal" class="info color-mode" onclick="changeColorMode('normal')"><span>normal</span></label>
 
-					<input type="radio" id="rainbow" name="color-mode" value="rainbow">
-					<label for="rainbow" class="color-mode" onclick="changeColorMode('rainbow')">rainbow</label>
+					<input type="radio" id="random" class="color-mode-radio" name="color-mode" value="random">
+					<label for="random" class="info color-mode" onclick="changeColorMode('random')"><span>random</span></label>
 
-					<input type="radio" id="classic" name="color-mode" value="classic">
-					<label for="classic" class="color-mode" onclick="changeColorMode('classic')">classic</label>
-				</div>-->
+					<input type="radio" id="rainbow" class="color-mode-radio" name="color-mode" value="rainbow">
+					<label for="rainbow" class="info color-mode" onclick="changeColorMode('rainbow')"><span>rainbow</span></label>
+				</div>
 
 				<label for="settings-checkbox" class="backdrop" style="display: none"></label>
 			</div>
