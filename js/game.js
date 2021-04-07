@@ -62,6 +62,9 @@ function tick(currTick) {
     if (!pauseCheckbox.checked) {
         if (currTick % 5 == 0) {
             updateTime(timeElem, Date.now() - gameStartTime);
+
+            if (!document.hasFocus() && !pauseCheckbox.checked)
+                pause(true);
     
             checkField();
     
@@ -75,14 +78,14 @@ function tick(currTick) {
     }
 }
 
-function pause() {
-    pauseCheckbox.checked = !pauseCheckbox.checked;
+function pause(toggle = false) {
+    if (toggle)
+        pauseCheckbox.checked = !pauseCheckbox.checked;
 
-    if (pauseCheckbox.checked) {
+    if (pauseCheckbox.checked)
         pauseStartTime = Date.now();
-    } else {
+    else
         gameStartTime += Date.now() - pauseStartTime;
-    }
 }
 
 function addTetromino() {

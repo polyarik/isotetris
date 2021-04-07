@@ -9,6 +9,11 @@ function checkDevice() {
 		document.querySelector(".controls-desktop").style.display = "none";
 		document.querySelector(".controls-mobile").style.display = "unset";
 	}
+
+	document.onkeydown = () => {
+        document.querySelector("#controls-radio").checked = true;
+        init();
+    };
 }
 
 function init() {

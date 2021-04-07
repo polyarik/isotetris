@@ -1,8 +1,3 @@
-document.onkeydown = () => {
-    document.querySelector("#controls-radio").checked = true;
-    init();
-};
-
 function initControls() {
     if (isMobile)
         initMobileControls();
@@ -39,7 +34,7 @@ function initDesktopControls() {
 
             case 27:
             case 13:
-                pause();
+                pause(true);
         }   
     };
     
