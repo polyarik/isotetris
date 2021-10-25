@@ -26,8 +26,15 @@ function init() {
 
 function resize() {
 	if (canvasWrapper) {
-		canvas.width = canvasWrapper.clientWidth;
-		canvas.height = canvasWrapper.clientHeight;
+		const width = canvasWrapper.clientWidth;
+		const height = canvasWrapper.clientHeight;
+		const scale = window.devicePixelRatio;
+
+		canvas.style.width = width + "px";
+		canvas.style.height = height + "px";
+
+		canvas.width = Math.floor(width * scale);
+		canvas.height = Math.floor(height * scale);
 
 		render(canvas);
 	}
